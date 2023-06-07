@@ -42,4 +42,4 @@ interface {{ interface.name }}
 {%- endfor %}
 
 
-snmp-server community {{ device.snmp-ro-community }} RO 
+snmp-server community {{ snmp-ro-community }} RO 

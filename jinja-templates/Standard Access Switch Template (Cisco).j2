@@ -1,4 +1,3 @@
-#jinja2: lstrip_blocks: True
 hostname {{ device.name }}
 
 {% for vl in device.site.vlans.all() %}
@@ -6,9 +5,9 @@ vlan {{vl.vid }}
  name {{ vl.name }} 
 {%- endfor %}
 
-{% for name_server in device.local_context_data['name-servers'] %}
+{% for name_server in device.local_context_data['name-servers'] -%}
 ip name-server {{ name_server }}
-{% endfor %}
+{%- endfor %}
 
 {% for interface in device.interfaces.all() %}
 {%- if interface.mgmt_only == false %}

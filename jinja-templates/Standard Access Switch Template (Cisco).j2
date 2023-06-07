@@ -41,7 +41,7 @@ interface {{ interface.name }}
 {%- endif %}
 {%- endfor %}
 
-% set ntp = ntp-servers %}
+{% set ntp = ntp-servers %}
 {% for ntp_server in ntp %}
 ntp server {{ server }}
 {% endfor %}

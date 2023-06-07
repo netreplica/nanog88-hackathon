@@ -5,8 +5,8 @@ vlan {{vl.vid }}
  name {{ vl.name }} 
 {%- endfor %}
 
-{% for name_server in device.local_context_data['name-servers'] %}
-ip name-server {{ name_server }}
+{% for server in name-servers %}
+ip name-server {{ server }}
 {%- endfor %}
 
 {% for interface in device.interfaces.all() %}
@@ -45,6 +45,12 @@ interface {{ interface.name }}
 {%- endif %}
 {%- endfor %}
 
-{% for server in ntpservers %}
+snmp-server community {{ snmp_ro_community }} RO 
+
+{% for server in syslog_servers %}
+logging host {{ server }} transport udp port 1514
+{%- endfor %}
+
+{% for server in ntp_servers %}
 ntp server {{ server }}
 {%- endfor %}

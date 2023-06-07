@@ -1,14 +1,14 @@
 {
-    "name-servers": [
+    "name_servers": [
         "8.8.8.8",
         "9.9.9.9"
     ],
-    "ntpservers": [
+    "ntp_servers": [
         "192.168.4.10",
         "192.168.4.11"
     ],
-    "snmp-ro-community": "R34d0nlY",
-    "syslog-servers": [
+    "snmp_ro_community": "R34d0nlY",
+    "syslog_servers": [
         "192.168.4.12",
         "192.168.4.13"
     ]

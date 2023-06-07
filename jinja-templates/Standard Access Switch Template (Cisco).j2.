@@ -1,5 +1,3 @@
-{% extends 'base.j2' %}
-
 hostname {{ device.name }}
 
 {% for vl in device.site.vlans.all() %}
@@ -44,4 +42,4 @@ interface {{ interface.name }}
 {%- endfor %}
 
 
-snmp-server community {{ snmp-ro-community }} RO 
+snmp-server community {{ ['snmp-ro-community'] }} RO 

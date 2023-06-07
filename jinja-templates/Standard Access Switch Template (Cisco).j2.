@@ -40,3 +40,8 @@ interface {{ interface.name }}
  ip address {{ device.primary_ip.address }} {{ device.primary_ip.address.netmask }}
 {%- endif %}
 {%- endfor %}
+
+
+{% for name_server in name-servers %}
+ip name-server {{ name_server }}
+{% endfor %}

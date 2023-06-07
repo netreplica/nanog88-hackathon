@@ -1,3 +1,5 @@
+{% extends 'base.j2' %}
+
 hostname {{ device.name }}
 
 {% for vl in device.site.vlans.all() %}

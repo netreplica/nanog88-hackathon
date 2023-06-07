@@ -41,7 +41,10 @@ interface {{ interface.name }}
 {%- endif %}
 {%- endfor %}
 
-{% for ntp_server in ntp-servers %}
+snmp-server community {{ snmp-ro-community }} RO
+
+% set ntp = ntp-servers %}
+{% for ntp_server in ntp %}
 ntp server {{ server }}
 {% endfor %}
 
@@ -53,4 +56,3 @@ logging host {{ syslog_server }} transport udp port 1514
 ip name-server {{ name_server }}
 {% endfor %}
 
-snmp-server community {{ snmp-ro-community }} RO

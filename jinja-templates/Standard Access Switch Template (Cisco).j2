@@ -5,6 +5,10 @@ vlan {{vl.vid }}
  name {{ vl.name }} 
 {%- endfor %}
 
+{% for name_server in device.local_context_data['name-servers'] %}
+ip name-server {{ name_server }}
+{% endfor %}
+
 {% for interface in device.interfaces.all() %}
 {%- if interface.mgmt_only == false %}
 interface {{ interface.name }}

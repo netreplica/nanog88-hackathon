@@ -43,5 +43,5 @@ interface {{ interface.name }}
 
 
 {% for server in ntp-servers %}
-ip ntp server {{ server }}
+ntp server {{ server }}
 {% endfor %}

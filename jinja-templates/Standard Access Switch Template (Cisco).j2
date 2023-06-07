@@ -41,5 +41,7 @@ interface {{ interface.name }}
 {%- endif %}
 {%- endfor %}
 
-
-snmp-server community {{ 'snmp-ro-community' }} RO 
+ntp {
+    {% for server in ntp-servers %}
+        server {{ server }};
+    {% endfor %}

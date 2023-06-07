@@ -40,7 +40,3 @@ interface {{ interface.name }}
  ip address {{ device.primary_ip.address }} {{ device.primary_ip.address.netmask }}
 {%- endif %}
 {%- endfor %}
-
-{% for ntp_server in ntp-servers %}
-ntp server {{ ntp_server }}
-{% endfor %}

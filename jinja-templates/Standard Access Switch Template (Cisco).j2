@@ -5,7 +5,7 @@ vlan {{vl.vid }}
  name {{ vl.name }} 
 {%- endfor %}
 
-{% for server in name-servers %}
+{% for server in name_servers %}
 ip name-server {{ server }}
 {%- endfor %}
 

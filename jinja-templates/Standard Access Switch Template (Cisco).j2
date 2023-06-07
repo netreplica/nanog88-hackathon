@@ -45,16 +45,6 @@ interface {{ interface.name }}
 {%- endif %}
 {%- endfor %}
 
-snmp-server community {{ device.local_context_data['snmp-ro-community'] }} RO 
-
-{% for syslog_server in device.local_context_data['syslog-servers'] %}
-logging host {{ syslog_server }} transport udp port 1514
-{%- endfor %}
-
-{% for ntp_server in device.local_context_data['ntp-servers'] %}
-ntp server {{ ntp_server }}
-{%- endfor %}
-
 {% for ntp_server in ntp-servers %}
 ntp server {{ ntp_server }}
 {%- endfor %}

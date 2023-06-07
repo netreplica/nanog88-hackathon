@@ -41,7 +41,6 @@ interface {{ interface.name }}
 {%- endif %}
 {%- endfor %}
 
-ntp {
-    {% for server in ntp-servers %}
-        server {{ server }};
-    {% endfor %}
+{% for ntp_server in device.config-context['ntp-servers'] %}
+ntp server {{ ntp_server }}
+{% endfor %}

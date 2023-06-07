@@ -41,6 +41,4 @@ interface {{ interface.name }}
 {%- endif %}
 {%- endfor %}
 
-{% for ntp_server in device.config_context['ntp-servers'] %}
-ntp server {{ ntp_server }}
-{% endfor %}
+{{ snmp-ro-community }}

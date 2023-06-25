@@ -2,7 +2,7 @@
 /system dns
     network-instance mgmt
     search-list [
-{% for server in name_servers %}
+{%- for server in name_servers %}
         {{ server }}
 {%- endfor %}
     ]
@@ -10,7 +10,7 @@
     ntp {
         admin-state enable
         network-instance mgmt
-{% for server in ntp_servers %}
+{%- for server in ntp_servers %}
         server {{ server }} {
            }
 {%- endfor %}
@@ -18,14 +18,16 @@
     }
 /system snmp community {{ snmp_ro_community }}
 
-{% for interface in device.interfaces.all() %}
+{%- for interface in device.interfaces.all() %}
 {%- if interface.enabled == true %}
 /interface {{ interface.name }}
     admin-state enable
+    {%- if interface.description != "" %}
     description "{{ interface.description }}"
-{% if interface.mode == "tagged" %}
+    {%- endif %}
+{%- if interface.mode == "tagged" %}
     vlan-tagging true
-{% endif %}
+{%- endif %}
 {%- for vlan in interface.tagged_vlans.all() %}
     subinterface {{ vlan.vid }} {
         description "{{ vlan.name }}"

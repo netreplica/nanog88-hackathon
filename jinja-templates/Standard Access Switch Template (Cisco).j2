@@ -1,3 +1,4 @@
+!
 hostname {{ device.name }}
 !
 {%- for vl in device.site.vlans.all() %}
@@ -56,3 +57,5 @@ logging host {{ server }} transport udp port 1514
 {%- for server in ntp_servers %}
 ntp server {{ server }}
 {%- endfor %}
+!
+end

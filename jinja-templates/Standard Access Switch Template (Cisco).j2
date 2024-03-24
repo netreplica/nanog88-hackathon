@@ -1,15 +1,15 @@
 hostname {{ device.name }}
 !
-{% for vl in device.site.vlans.all() %}
+{%- for vl in device.site.vlans.all() %}
 vlan {{vl.vid }}
  name {{ vl.name }}
 {%- endfor %}
 !
-{% for server in name_servers %}
+{%- for server in name_servers %}
 ip name-server {{ server }}
 {%- endfor %}
 !
-{% for interface in device.interfaces.all() %}
+{%- for interface in device.interfaces.all() %}
 {%- if interface.mgmt_only == false %}
 interface {{ interface.name }}
  {%- if interface.enabled == false %}
@@ -33,7 +33,7 @@ switchport trunk allowed vlan all
  channel-group {% for char in interface.lag.name %}{%- if char.isdigit() %}{{ char }}{%- endif %}{%- endfor %} mode on
 {%- endif %}
 {%- endif %}
-{% else %}
+{%- else %}
 interface {{ interface.name }}
  description Management VLAN
 {%- if interface.enabled == false %}
@@ -49,10 +49,10 @@ interface {{ interface.name }}
 !
 snmp-server community {{ snmp_ro_community }} RO
 !
-{% for server in syslog_servers %}
+{%- for server in syslog_servers %}
 logging host {{ server }} transport udp port 1514
 {%- endfor %}
 !
-{% for server in ntp_servers %}
+{%- for server in ntp_servers %}
 ntp server {{ server }}
 {%- endfor %}

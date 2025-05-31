@@ -1,15 +1,3 @@
-!
-hostname {{ device.name }}
-!
-{%- for vl in device.site.vlans.all() %}
-vlan {{vl.vid }}
- name {{ vl.name }}
-{%- endfor %}
-!
-{%- for server in name_servers %}
-ip name-server {{ server }}
-{%- endfor %}
-!
 {%- for interface in device.interfaces.all() %}
 {%- if interface.mgmt_only == false %}
 interface {{ interface.name }}
@@ -26,7 +14,7 @@ interface {{ interface.name }}
 {%- for vlan in interface.tagged_vlans.all() %}
  switchport trunk allowed vlan add {{ vlan.vid }}
 {%- endfor %}
-{%- elif "tagged-all" in interface.mode %}
+{%- elif interface.mode == "tagged-all" %}
 switchport mode trunk
 switchport trunk allowed vlan all
 {%- else %}
